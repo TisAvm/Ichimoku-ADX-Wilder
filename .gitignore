@@ -166,3 +166,4 @@ dashboard/.DS_Store
 /venv3.8
 /backtesting/data
 /backtesting/results
+/.vscode
