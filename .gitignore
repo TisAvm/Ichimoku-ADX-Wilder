@@ -167,3 +167,4 @@ dashboard/.DS_Store
 /backtesting/data
 /backtesting/results
 /.vscode
+/data
