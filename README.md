@@ -10,29 +10,59 @@ The algorithm is specifically designed for algorithmic trading on Indian markets
 
 ```text
 .
-├── LICENSE
-├── README.md
-├── requirements.txt
-├── backtesting/
-│   ├── backTesting-Algo.ipynb          # Comprehensive backtesting framework
-│   ├── signal_genetator.ipynb          # Main signal generation logic
-│   ├── data/
-│   │   └── data.csv                    # Sample historical data
-│   └── dataFormaters/
-│       └── formatter.ipynb             # Data preprocessing utilities
-│       └── resample.py
-├── dashboard/
-│   └── algoDashboard/
-│       ├── app.py                      # Dash web application
-│       ├── static/
-│       │   └── styles.css              # Dashboard styling
-│       └── templates/
-│           └── index.html              # Dashboard interface
-├── docs/
+├── .env                                # Environment variables (database config)
+├── .gitignore                          # Git ignore rules
+├── .vscode/                            # VS Code workspace settings
+├── LICENSE                             # Apache License 2.0
+├── README.md                           # Project documentation
+├── requirements.txt                    # Python dependencies
+├── backtesting/                        # Main trading algorithm and backtesting
+│   ├── signal_generator.py             # Core signal generation module
+│   ├── main/                           # Main backtesting applications
+│   │   ├── backtesting.py              # Primary backtesting engine
+│   │   ├── config_backtesting.py       # Configuration settings
+│   │   ├── run_backtest.py             # Backtest execution script
+│   │   ├── display_pattern_analysis.py # Pattern visualization
+│   │   ├── generate_pattern_metrics.py # Performance metrics generation
+│   │   ├── test_position_tracking.py   # Position tracking tests
+│   │   ├── POSITION_TRACKING_README.md # Position tracking documentation
+│   │   └── README_BACKTESTING.md       # Backtesting guide
+│   ├── notebooks/                      # Jupyter notebooks for analysis
+│   │   ├── signal_generator.ipynb      # Interactive signal generation
+│   │   ├── options_backtest.ipynb      # Options trading backtests
+│   │   └── options_backtest.log        # Backtest execution logs
+│   ├── data/                           # Historical data and signals
+│   │   ├── data.csv                    # Raw NIFTY historical data
+│   │   ├── test_signals.csv            # Test signal data
+│   │   ├── ichimoku_adx_wilder_signals.csv      # Generated signals
+│   │   ├── ichimoku_adx_wilder_signals_1min.csv # 1-minute signals
+│   │   ├── ichimoku_adx_wilder_signals_5min.csv # 5-minute signals
+│   │   ├── ichimoku_adx_wilder_signals_10min.csv # 10-minute signals
+│   │   └── ichimoku_adx_wilder_signals_15min.csv # 15-minute signals
+│   ├── dataFormaters/                  # Data preprocessing utilities
+│   │   └── resample.py                 # Data resampling functions
+│   └── results/                        # Backtesting results
+│       ├── pattern_0_backtest_results.csv # Pattern 0 results
+│       ├── pattern_1_backtest_results.csv # Pattern 1 results
+│       ├── pattern_2_backtest_results.csv # Pattern 2 results
+│       ├── pattern_3_backtest_results.csv # Pattern 3 results
+│       ├── pattern_4_backtest_results.csv # Pattern 4 results
+│       ├── pattern_5_backtest_results.csv # Pattern 5 results
+│       ├── pattern_6_backtest_results.csv # Pattern 6 results
+│       ├── pattern_7_backtest_results.csv # Pattern 7 results
+│       ├── pattern_8_backtest_results.csv # Pattern 8 results
+│       ├── pattern_9_backtest_results.csv # Pattern 9 results
+│       └── 5min_full_backtest/         # 5-minute timeframe results
+├── docs/                               # Documentation and guides
 │   ├── content_mql5.md                 # MQL5 implementation guide
-│   ├── setup_guide.md                  # Environment setup instructions
+│   ├── content_mql5_backup.md          # MQL5 backup documentation
+│   ├── content_mql5_formatted.md       # Formatted MQL5 guide
 │   └── ichimoku_adx_algorithm_guide.md # Comprehensive algorithm documentation
-└── venv3.8/                            # Python virtual environment
+└── .venv/                            # Python virtual environment
+    ├── bin/                            # Executable scripts and activators
+    ├── lib/                            # Python libraries
+    ├── include/                        # Header files
+    └── share/                          # Shared data
 ```
 
 ## Key Features
@@ -75,30 +105,33 @@ The algorithm is specifically designed for algorithmic trading on Indian markets
 ### Folder Descriptions
 
 #### 📂 **backtesting/**
-Contains notebooks and tools for simulating trading strategies using historical data:
+Contains the core trading algorithm, backtesting framework, and analysis tools:
 
-- **`signal_genetator.ipynb`**: Core signal generation logic with all 10 patterns
-- **`backTesting-Algo.ipynb`**: Comprehensive backtesting framework with performance metrics
-- **`data/`**: Historical NIFTY minute-level data storage
+- **`signal_generator.py`**: Core signal generation module with all 10 patterns
+- **`main/`**: Primary backtesting applications and utilities
+  - **`backtesting.py`**: Main backtesting engine with performance analytics
+  - **`config_backtesting.py`**: Configuration settings and parameters
+  - **`run_backtest.py`**: Script to execute backtesting workflows
+  - **`display_pattern_analysis.py`**: Pattern visualization and analysis tools
+  - **`generate_pattern_metrics.py`**: Performance metrics calculation
+  - **`test_position_tracking.py`**: Position tracking validation tests
+- **`notebooks/`**: Interactive Jupyter notebooks for research and analysis
+  - **`signal_generator.ipynb`**: Interactive signal generation and testing
+  - **`options_backtest.ipynb`**: Options trading strategy backtests
+- **`data/`**: Historical data and generated signals storage
+  - Raw NIFTY minute-level data and multi-timeframe signal outputs
 - **`dataFormaters/`**: Data preprocessing and cleaning utilities
-
-#### 📂 **dashboard/**
-Real-time monitoring and visualization interface:
-
-- **`algoDashboard/`**: Dash-based web application for live monitoring
-  - **`app.py`**: Main dashboard application with real-time signal display
-  - **`static/`**: CSS styling and static assets
-  - **`templates/`**: HTML templates for dashboard interface
+- **`results/`**: Backtesting results for all 10 patterns with detailed metrics
 
 #### 📂 **docs/**
-Comprehensive documentation and guides:
+Comprehensive documentation and implementation guides:
 
-- **`ichimoku_adx_algorithm_guide.md`**: Complete algorithm documentation
-- **`setup_guide.md`**: Environment setup and configuration instructions
-- **`content_mql5.md`**: MQL5 implementation guidelines
+- **`ichimoku_adx_algorithm_guide.md`**: Complete algorithm documentation with technical details
+- **`content_mql5.md`**: MQL5 implementation guidelines for MetaTrader integration
+- **`content_mql5_backup.md`** & **`content_mql5_formatted.md`**: Additional MQL5 documentation versions
 
 #### 📂 **venv3.8/**
-Python virtual environment with all required dependencies pre-installed
+Python virtual environment with all required dependencies and tools pre-installed
 
 ## Data Requirements
 
@@ -160,14 +193,19 @@ columns = {
 4. **Run Signal Generator**:
 
    ```bash
-   jupyter notebook backtesting/signal_genetator.ipynb
+   # Run as Python module
+   cd backtesting
+   python signal_generator.py
+   
+   # Or use interactive notebook
+   jupyter notebook notebooks/signal_generator.ipynb
    ```
 
-5. **Start Dashboard**:
+5. **Execute Backtesting**:
 
    ```bash
-   cd dashboard/algoDashboard
-   python app.py
+   cd backtesting/main
+   python run_backtest.py
    ```
 
 
@@ -251,7 +289,6 @@ for tf in timeframes:
 
 ### 📖 **Complete Guides**
 - **[Algorithm Guide](docs/ichimoku_adx_algorithm_guide.md)**: Comprehensive technical documentation
-- **[Setup Guide](docs/setup_guide.md)**: Environment configuration and installation
 - **[MQL5 Guide](docs/content_mql5.md)**: MetaTrader implementation
 
 ### 🔗 **Quick Links**
